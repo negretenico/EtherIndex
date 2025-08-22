@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:indexer;MODE=PostgreSQL;DATABASE_TO_UPPER=false
+    username: sa
+    password: ""
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate.jdbc.lob.non_contextual_creation: true
+
+indexer:
+  rpc:
+    primary: ${ALCHEMY_URL}
+    fallback: ${INFURA_URL}
+  confirmations: 12
+  reconcile:
+    lookback: 100
+alchemy:
+  host: worldchain-sepolia.g.alchemy.com
+  apiKey: ${ALCHEMY_API_KEY}
