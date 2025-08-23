@@ -1,51 +1,51 @@
-create table blocks (
-  number        bigint primary key,
-  hash          bytea unique not null,
-  parent_hash   bytea not null,
-  timestamp     timestamptz not null,
-  canonical     boolean not null default true
+-- Create blocks table
+CREATE TABLE blocks (
+    hash VARCHAR(255) PRIMARY KEY,
+    baseFeePerGas VARCHAR(255),
+    blobGasUsed VARCHAR(255),
+    difficulty VARCHAR(255),
+    excessBlobGas VARCHAR(255),
+    extraData VARCHAR(1000),
+    gasLimit VARCHAR(255),
+    gasUsed VARCHAR(255),
+    logsBloom VARCHAR(1000),
+    miner VARCHAR(255),
+    mixHash VARCHAR(255),
+    nonce VARCHAR(255),
+    number VARCHAR(255),
+    parentBeaconBlockRoot VARCHAR(255),
+    parentHash VARCHAR(255),
+    receiptsRoot VARCHAR(255),
+    sha3Uncles VARCHAR(255),
+    size VARCHAR(255),
+    stateRoot VARCHAR(255),
+    timestamp VARCHAR(255),
+    transactionsRoot VARCHAR(255),
+    withdrawalsRoot VARCHAR(255),
+    uncles TEXT,
+    withdrawals TEXT,
+    createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-create table transactions (
-  hash          bytea primary key,
-  block_number  bigint references blocks(number),
-  from_address  bytea not null,
-  to_address    bytea,
-  value_wei     numeric(78,0) not null,
-  nonce         bigint not null,
-  gas_limit     bigint not null,
-  gas_price_wei numeric(78,0),
-  input         bytea,
-  status        smallint,         -- from receipt
-  idx_in_block  int not null,
-  unique (block_number, idx_in_block)
-);
-
-create table logs (
-  id            bigserial primary key,
-  tx_hash       bytea not null references transactions(hash),
-  block_number  bigint not null,
-  log_index     int not null,
-  address       bytea not null,
-  topics        bytea[] not null,
-  data          bytea,
-  unique (tx_hash, log_index)
-);
-
--- ERC-20 Transfer(address indexed from, address indexed to, uint256 value)
-create table erc20_transfers (
-  id            bigserial primary key,
-  contract      bytea not null,
-  tx_hash       bytea not null references transactions(hash),
-  block_number  bigint not null,
-  log_index     int not null,
-  from_address  bytea not null,
-  to_address    bytea not null,
-  value_wei     numeric(78,0) not null,
-  unique (tx_hash, log_index)
-);
-
-create table cursors (
-  name          text primary key,
-  last_block    bigint not null
+-- Create transactions table
+CREATE TABLE transactions (
+    hash VARCHAR(255) PRIMARY KEY,
+    blockHash VARCHAR(255),
+    blockNumber VARCHAR(255),
+    fromAddress VARCHAR(255),
+    gas VARCHAR(255),
+    gasPrice VARCHAR(255),
+    input TEXT,
+    nonce VARCHAR(255),
+    toAddress VARCHAR(255),
+    transactionIndex VARCHAR(255),
+    transactionValue VARCHAR(255),
+    transactionType VARCHAR(255),
+    v VARCHAR(255),
+    r VARCHAR(255),
+    s VARCHAR(255),
+    sourceHash VARCHAR(255),
+    mint VARCHAR(255),
+    depositReceiptVersion VARCHAR(255),
+    createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

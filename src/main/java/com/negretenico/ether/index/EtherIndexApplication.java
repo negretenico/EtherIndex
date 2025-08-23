@@ -4,8 +4,10 @@ import com.negretenico.ether.index.model.AlchemyProperties;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 @SpringBootApplication
+@EnableAsync
 @EnableConfigurationProperties(AlchemyProperties.class)
 public class EtherIndexApplication {
 
