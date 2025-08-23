@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 import java.util.Optional;
 
-public interface BlockRepository extends JpaRepository<String, BlockData> {
+public interface BlockRepository extends JpaRepository<BlockData,String > {
 	Optional<BlockData> findByNumber(String number);
 
 	Optional<BlockData> findTopByOrderByNumberDesc();
