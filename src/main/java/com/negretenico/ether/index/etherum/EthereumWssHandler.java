@@ -5,7 +5,7 @@ import com.common.functionico.evaluation.Result;
 import com.common.functionico.risky.Try;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.negretenico.ether.index.model.NewBlockEvent;
+import com.negretenico.ether.index.model.events.NewBlockHeadEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.util.function.ThrowingSupplier;
@@ -77,7 +77,7 @@ public class EthereumWssHandler extends TextWebSocketHandler {
 	private void handleBlockHeader(JsonNode blockHeader) {
 		log.info("New block: {}", blockHeader.get("number").asText());
 		// Process the new block header as needed
-		applicationEventPublisher.publishEvent(NewBlockEvent.of(this,
+		applicationEventPublisher.publishEvent(NewBlockHeadEvent.of(this,
 				blockHeader.get("number").asText()));
 	}
 
