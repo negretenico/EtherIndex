@@ -7,14 +7,14 @@ import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
+import java.util.concurrent.BlockingQueue;
 
 @Service
 @Slf4j
 public class PersistenceListener {
-	private final PersistenceService persistenceService;
-
-	public PersistenceListener(PersistenceService persistenceService) {
-		this.persistenceService = persistenceService;
+	private final BlockingQueue<BlockData> blockQueue;
+	public PersistenceListener( BlockingQueue<BlockData> blockQueue) {
+		this.blockQueue = blockQueue;
 	}
 	@EventListener(BlockFetchedEvent.class)
 	public void subscribe(BlockFetchedEvent blockFetchedEvent){
@@ -28,7 +28,11 @@ public class PersistenceListener {
 			return;
 		}
 		BlockData bd = blockFetchedEvent.getEthereumBlockResponse().result();
-		persistenceService.save(bd);
-		log.info("PersistenceListener: Finished save");
+		boolean offered = blockQueue.offer(bd);
+		if(!offered){
+			log.warn("PersistenceListener: Queue is full dropping {}",bd.getHash());
+			return;
+		}
+		log.info("PersistenceListener: Finished");
 	}
 }
