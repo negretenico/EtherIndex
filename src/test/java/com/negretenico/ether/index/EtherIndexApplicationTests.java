@@ -1,10 +1,10 @@
-package com.negretenico.changeme;
+package com.negretenico.ether.index;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ChangemeApplicationTests {
+class EtherIndexApplicationTests {
 
 	@Test
 	void contextLoads() {

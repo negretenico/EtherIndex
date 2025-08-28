@@ -1,0 +1,51 @@
+-- Create blocks table
+CREATE TABLE blocks (
+    hash VARCHAR(255) PRIMARY KEY,
+    baseFeePerGas VARCHAR(255),
+    blobGasUsed VARCHAR(255),
+    difficulty VARCHAR(255),
+    excessBlobGas VARCHAR(255),
+    extraData VARCHAR(1000),
+    gasLimit VARCHAR(255),
+    gasUsed VARCHAR(255),
+    logsBloom VARCHAR(1000),
+    miner VARCHAR(255),
+    mixHash VARCHAR(255),
+    nonce VARCHAR(255),
+    number VARCHAR(255),
+    parentBeaconBlockRoot VARCHAR(255),
+    parentHash VARCHAR(255),
+    receiptsRoot VARCHAR(255),
+    sha3Uncles VARCHAR(255),
+    size VARCHAR(255),
+    stateRoot VARCHAR(255),
+    timestamp VARCHAR(255),
+    transactionsRoot VARCHAR(255),
+    withdrawalsRoot VARCHAR(255),
+    uncles TEXT,
+    withdrawals TEXT,
+    createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Create transactions table
+CREATE TABLE transactions (
+    hash VARCHAR(255) PRIMARY KEY,
+    blockHash VARCHAR(255),
+    blockNumber VARCHAR(255),
+    fromAddress VARCHAR(255),
+    gas VARCHAR(255),
+    gasPrice VARCHAR(255),
+    input TEXT,
+    nonce VARCHAR(255),
+    toAddress VARCHAR(255),
+    transactionIndex VARCHAR(255),
+    transactionValue VARCHAR(255),
+    transactionType VARCHAR(255),
+    v VARCHAR(255),
+    r VARCHAR(255),
+    s VARCHAR(255),
+    sourceHash VARCHAR(255),
+    mint VARCHAR(255),
+    depositReceiptVersion VARCHAR(255),
+    createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
