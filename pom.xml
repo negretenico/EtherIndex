@@ -8,7 +8,7 @@
 		<version>3.5.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.negretenico.ether.index</groupId>
+	<groupId>com.negretenico</groupId>
 	<artifactId>EtherIndex</artifactId>
 	<version>0.0.1</version>
 	<name>EtherIndex</name>
