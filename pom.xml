@@ -9,8 +9,8 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.negretenico.ether.index</groupId>
-	<artifactId>etherIndex</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>EtherIndex</artifactId>
+	<version>0.0.1</version>
 	<name>EtherIndex</name>
 	<description>shared </description>
 	<url>https://github.com/negretenico/EtherIndex</url>
