@@ -68,35 +68,3 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
             ALCHEMY_API_KEY=${{ secrets.ALCHEMY_API_KEY }}
-
-  deploy-to-server:
-    needs: build-and-deploy
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
-
-    steps:
-      - name: Deploy to server
-        uses: appleboy/ssh-action@v1.0.0
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.PRIVATE_KEY }}
-          envs: ALCHEMY_API_KEY
-          script: |
-            # Set the API key for docker-compose
-            export ALCHEMY_API_KEY="${{ secrets.ALCHEMY_API_KEY }}"
-            
-            # Pull the latest image
-            docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
-            
-            # Stop and remove existing container
-            docker-compose -f /path/to/your/docker-compose.yml down || true
-            
-            # Update the image tag in docker-compose
-            sed -i 's|image: ether-index.*|image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest|' /path/to/your/docker-compose.yml
-            
-            # Start the application
-            docker-compose -f /path/to/your/docker-compose.yml up -d
-            
-            # Clean up old images
-            docker image prune -f
