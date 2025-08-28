@@ -54,12 +54,11 @@ The container is published to GitHub Packages: 👉 ghcr.io/negretenico/etherind
 
 ---
 ## 📖 API Endpoints
-| Method | Endpoint                  | Description                     |
-| ------ | ------------------------- | ------------------------------- |
-| GET    | `/api/blocks`             | List all stored blocks          |
-| GET    | `/api/blocks/{blockHash}` | Retrieve a specific block       |
-| GET    | `/api/transactions`       | List all stored transactions    |
-| GET    | `/api/transactions/{id}`  | Retrieve a specific transaction |
+| Method | Endpoint                                      | Description                                      |
+| ------ | --------------------------------------------- | ------------------------------------------------ |
+| GET    | `/api/v1/blocks/{id}`                         | Retrieve a specific block by ID or hash          |
+| GET    | `/api/v1/tx/{hash}`                           | Retrieve a specific transaction by hash          |
+| GET    | `/api/v1/tx/{address}/transactions`           | Retrieve transactions by `from`/`to` address     |
 
 
 ---

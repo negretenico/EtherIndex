@@ -133,6 +133,17 @@
 			<id>github</id>
 			<name>GitHub Packages</name>
 			<url>https://maven.pkg.github.com/negretenico/EtherIndex</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>github-functionico</id>
+			<name>GitHub Packages - Functionico</name>
+			<url>https://maven.pkg.github.com/negretenico/functionico</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
 		</repository>
 	</repositories>
 	<distributionManagement>
