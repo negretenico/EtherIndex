@@ -102,9 +102,9 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.13.0</version>
 				<configuration>
-					<source>24</source>
-					<target>24</target>
-					<release>24</release> <!-- Add this for better compatibility -->
+					<source>21</source>
+					<target>21</target>
+					<release>21</release> <!-- Add this for better compatibility -->
 					<annotationProcessorPaths>
 						<path>
 							<groupId>org.projectlombok</groupId>
