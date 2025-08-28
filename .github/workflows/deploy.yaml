@@ -1,4 +1,4 @@
-name: Build and Deploy Microservice
+name: Build and Push to Registry
 
 on:
   push:
@@ -10,7 +10,7 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-  build-and-deploy:
+  build-and-push:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -35,6 +35,8 @@ jobs:
 
       - name: Build with Maven
         run: mvn clean package -DskipTests
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Deploy JAR to GitHub Packages
         run: mvn deploy -DskipTests
