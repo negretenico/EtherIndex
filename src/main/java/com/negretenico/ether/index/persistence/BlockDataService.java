@@ -6,6 +6,8 @@ import com.negretenico.ether.index.repository.BlockRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @Slf4j
 public class BlockDataService {
@@ -20,5 +22,9 @@ public class BlockDataService {
 				.onSuccess(block ->
 						log.info("BlockDataService: Successfully save {}", block.getHash()))
 				.onFailure(e->log.error("BlockDataService: Failed to save",e));
+	}
+	public Result<BlockData> get(String id){
+		return Result.of(()-> blockRepository.findById(id))
+				.map(Optional::get);
 	}
 }
