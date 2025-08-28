@@ -64,7 +64,7 @@ The container is published to GitHub Packages: 👉 ghcr.io/negretenico/etherind
 ---
 ## 🔧 Tech Stack
 
-* Java 17 
+* Java 21
 * Spring Boot 
 * Spring Events (for decoupling)
 * Internal Queues (for resilience)
